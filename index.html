@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Кібер Безпека</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+body{
+    background:#050914;
+    color:#fff;
+}
+.hero{
+    min-height:100vh;
+    background:radial-gradient(circle at top, #0b2a44, #050914);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px 20px;
+}
+.hero-content{
+    max-width:720px;
+}
+.logo{
+    width:220px;
+    margin-bottom:25px;
+}
+.hero h1{
+    font-size:42px;
+    margin-bottom:15px;
+}
+.hero p{
+    color:#cfd9df;
+    font-size:18px;
+    margin-bottom:30px;
+}
+.btn{
+    padding:15px 35px;
+    border:none;
+    border-radius:30px;
+    background:#00c6ff;
+    color:#000;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+.btn:hover{ background:#00a3cc; }
+
+section{
+    padding:70px 20px;
+    max-width:1100px;
+    margin:auto;
+}
+h2{
+    text-align:center;
+    font-size:32px;
+    margin-bottom:40px;
+}
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+.card{
+    background:#0c1328;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    transition:.3s;
+}
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 0 25px rgba(0,198,255,.3);
+}
+.icon{
+    font-size:40px;
+    margin-bottom:15px;
+}
+.card ul{
+    list-style:none;
+    color:#cfd9df;
+}
+.card li{ margin-bottom:8px; }
+
+.form-wrap{
+    background:#0c1328;
+    padding:40px;
+    border-radius:20px;
+    max-width:500px;
+    margin:auto;
+}
+input, textarea{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+textarea{
+    resize:none;
+    height:120px;
+}
+footer{
+    text-align:center;
+    padding:30px;
+    color:#888;
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+<div class="hero-content">
+
+<!-- ✅ ЛОГОТИП, ЯКИЙ ТИ СКИНУВ (base64) -->
+<img class="logo" src="https://i.postimg.cc/mr8Mh3R0/Chat-GPT-Image-8-lut-2026-r-13-13-45.png
+" alt="Кібер Безпека">
+
+<h1>КІБЕР БЕЗПЕКА</h1>
+<p>Захищаємо ваш бізнес у цифровому світі</p>
+
+<button class="btn" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'})">
+Залишити заявку
+</button>
+
+</div>
+</div>
+
+<section>
+<h2>Наші послуги</h2>
+<div class="services">
+
+<div class="card">
+<div class="icon">🧠</div>
+<h3>Навчання команди</h3>
+<ul>
+<li>Основи кібербезпеки</li>
+<li>Захист від фішингу</li>
+<li>Паролі та доступи</li>
+</ul>
+</div>
+
+<div class="card">
+<div class="icon">🖥️</div>
+<h3>Встановлення захисту</h3>
+<ul>
+<li>Антивірус</li>
+<li>Firewall</li>
+<li>Захист серверів</li>
+</ul>
+</div>
+
+<div class="card">
+<div class="icon">🚨</div>
+<h3>Техпідтримка</h3>
+<ul>
+<li>Реакція на атаки</li>
+<li>Аварійна допомога</li>
+<li>Моніторинг 24/7</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<section id="form">
+<h2>Залишити заявку</h2>
+<div class="form-wrap">
+<form onsubmit="sendTG(event)">
+<input id="name" placeholder="Ваше імʼя" required>
+<input id="phone" placeholder="Телефон" required>
+<textarea id="msg" placeholder="Опишіть проблему"></textarea>
+<button class="btn">Надіслати</button>
+</form>
+</div>
+</section>
+
+<footer>© 2026 Кібер Безпека</footer>
+
+<script>
+function sendTG(e){
+e.preventDefault();
+const text = `🔐 Нова заявка
+👤 ${name.value}
+📞 ${phone.value}
+📝 ${msg.value}`;
+
+const TOKEN = "8543812247:AAFQiy1XWk0hnRIYFYk93RTvnUF_f8Gd1Gg";
+const CHAT = "8067180933";
+
+fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`,{
+method:"POST",
+headers:{'Content-Type':'application/json'},
+body:JSON.stringify({chat_id:CHAT,text})
+}).then(()=>{
+alert("Заявку надіслано ✅");
+e.target.reset();
+});
+}
+</script>
+
+</body>
+</html>
+
